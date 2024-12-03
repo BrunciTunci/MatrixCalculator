@@ -119,6 +119,8 @@
     <button onclick="checkSymmetry('B')">Provjera Simetričnosti B</button>
     <button onclick="powerMatrixA()">Potenciraj Matricu A</button> <!-- Gumb za potenciranje matrice A -->
     <button onclick="powerMatrixB()">Potenciraj Matricu B</button> <!-- Gumb za potenciranje matrice B -->
+    <button onclick="determinantA()">Determinanta A</button>
+    <button onclick="determinantB()">Determinanta B</button>
   </div>
 
   <div class="result">
@@ -296,6 +298,28 @@
       }
       alert(`Matrica ${matrixId} je simetrična!`);
     }
+
+    function determinantA() {
+  const matrix = getMatrix('A');
+  calculateDeterminant(matrix, 'A');
+}
+
+function determinantB() {
+  const matrix = getMatrix('B');
+  calculateDeterminant(matrix, 'B');
+}
+
+function calculateDeterminant(matrix, matrixId) {
+  if (matrix.length !== 2 || matrix[0].length !== 2) {
+    alert(`Determinanta matrice ${matrixId} se može izračunati samo za 2x2 matricu!`);
+    return;
+  }
+
+  const determinant = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+  const resultContainer = document.getElementById('result');
+  resultContainer.innerHTML = `<span>Determinanta matrice ${matrixId}: ${determinant}</span>`;
+}
+
   </script>
 </body>
 </html>
